@@ -1,0 +1,57 @@
+# Update bump details accordingly. Use bump check to confirm.
+# bump: git-sizer-version /GIT-SIZER_VERSION="(.*)"/ https://github.com/github/git-sizer.git|semver:*
+# GIT-SIZER_VERSION="V.R.M" # Specify a stable release
+# export ZOPEN_STABLE_TAG="v${GIT-SIZER_VERSION}"
+export ZOPEN_STABLE_URL="https://github.com/github/git-sizer.git"
+export ZOPEN_STABLE_DEPS="check_go make"
+export ZOPEN_DEV_URL="https://github.com/github/git-sizer.git"
+export ZOPEN_DEV_DEPS="check_go make"
+export ZOPEN_BUILD_LINE="DEV"
+export ZOPEN_CATEGORIES="utilities"
+export ZOPEN_CHECK_MINIMAL="y"
+export ZOPEN_MAKE_MINIMAL="y"
+export ZOPEN_COMP="GO"
+export ZOPEN_INSTALL="zopen_install"
+export ZOPEN_CONFIGURE="skip"
+export ZOPEN_CHECK_OPTS="test"
+export ZOPEN_NAME="git-sizer"
+export ZOPEN_CLEAN="zopen_clean"
+
+zopen_check_results()
+{
+  dir="$1"
+  pfx="$2"
+  chk="$1/$2_check.log"
+
+  # Echo the following information to gauge build health
+  echo "actualFailures:0"
+  echo "totalTests:1"
+  echo "expectedFailures:0"
+  echo "expectedTotalTests:1"
+}
+
+zopen_init()
+{
+  echo $ZOPEN_INSTALL_DIR
+  export CGO_ENABLED=0
+}
+
+zopen_install()
+{
+  mkdir -p "$ZOPEN_INSTALL_DIR/bin"
+  cp -rf bin/git-sizer  "$ZOPEN_INSTALL_DIR/bin/"
+}
+
+zopen_clean()
+{
+  chmod -R 755 ../go
+  rm -rf ../go* ../go
+}
+
+
+zopen_get_version()
+{
+  # Modify to echo the version of your tool/library
+  # Rather than hardcoding the version, obtain the version by running the tool/library
+  echo "1.0.0"
+}
