@@ -1,6 +1,6 @@
 # Update bump details accordingly. Use bump check to confirm.
 # bump: git-sizer-version /GIT-SIZER_VERSION="(.*)"/ https://github.com/github/git-sizer.git|semver:*
-# GIT-SIZER_VERSION="V.R.M" # Specify a stable release
+# GIT-SIZER_VERSION="1.5.0" # Specify a stable release
 # export ZOPEN_STABLE_TAG="v${GIT-SIZER_VERSION}"
 export ZOPEN_STABLE_URL="https://github.com/github/git-sizer.git"
 export ZOPEN_STABLE_DEPS="check_go make"
