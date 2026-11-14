@@ -1,0 +1,10 @@
+diff --git a/script/go b/script/go
+index aacd386..46adc8a 100755
+--- a/script/go
++++ b/script/go
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ 
+ set -e
+ 
