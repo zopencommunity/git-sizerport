@@ -1,12 +1,12 @@
 # Update bump details accordingly. Use bump check to confirm.
-# bump: git-sizer-version /GIT-SIZER_VERSION="(.*)"/ https://github.com/github/git-sizer.git|semver:*
-# GIT-SIZER_VERSION="V.R.M" # Specify a stable release
-# export ZOPEN_STABLE_TAG="v${GIT-SIZER_VERSION}"
+# bump: git-sizer-version /GIT_SIZER_VERSION="(.*)"/ https://github.com/github/git-sizer.git|semver:*
+GIT_SIZER_VERSION="1.6.0" # Specify a stable release
+export ZOPEN_STABLE_TAG="v${GIT_SIZER_VERSION}"
 export ZOPEN_STABLE_URL="https://github.com/github/git-sizer.git"
-export ZOPEN_STABLE_DEPS="check_go make"
+export ZOPEN_STABLE_DEPS="check_go make bash"
 export ZOPEN_DEV_URL="https://github.com/github/git-sizer.git"
 export ZOPEN_DEV_DEPS="check_go make"
-export ZOPEN_BUILD_LINE="DEV"
+export ZOPEN_BUILD_LINE="STABLE"
 export ZOPEN_CATEGORIES="utilities"
 export ZOPEN_CHECK_MINIMAL="y"
 export ZOPEN_MAKE_MINIMAL="y"
@@ -14,7 +14,7 @@ export ZOPEN_COMP="GO"
 export ZOPEN_INSTALL="zopen_install"
 export ZOPEN_CONFIGURE="skip"
 export ZOPEN_CHECK_OPTS="test"
-export ZOPEN_NAME="git-sizer"
+#export ZOPEN_NAME="git-sizer"
 export ZOPEN_CLEAN="zopen_clean"
 
 zopen_check_results()
@@ -53,5 +53,5 @@ zopen_get_version()
 {
   # Modify to echo the version of your tool/library
   # Rather than hardcoding the version, obtain the version by running the tool/library
-  echo "1.0.0"
+  bin/git-sizer --version | awk '{print $3}' | sed 's/-dirty$//'
 }
